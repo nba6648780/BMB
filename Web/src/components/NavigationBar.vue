@@ -16,37 +16,43 @@
 			</div>
 		</div>
 
-		<div v-if="store.getters.userinfo" class="header-side header-right">
-			<div @click="router().push({
-				path: '/purchase'
-			})" class="rechargeButton">
+    <div v-if="store.getters.userinfo" class="header-side header-right">
+      <div @click="router().push({
+                    path: '/purchase'
+                  })" class="rechargeButton hidden-xs-only">
+        <el-icon size="16">
+          <Goods/>
+        </el-icon>
+        <div class="rechargeButtonText">打赏</div>
+      </div>
+      <div class="header-right">
+        <div class="header-user-wrapper">
 
-				<div class="rechargeButtonText">赞助</div>
-			</div>
-			<div class="header-right">
-				<div class="header-user-wrapper">
 
-
-					<el-dropdown ref="dropdown1" trigger="contextmenu">
-						<div @click="showClick" class="header-user-button">
-
-							<div class="header-user-name">我的</div>
-						</div>
-						<template #dropdown>
-							<el-dropdown-menu class="dropdown-menu">
-								<el-dropdown-item @click="router().push({ path: '/collection' })">个人收藏</el-dropdown-item>
-								<el-dropdown-item @click="router().push({ path: '/Exchange' })">兑换中心</el-dropdown-item>
-								<el-dropdown-item divided @click="logout">退出登录</el-dropdown-item>
-							</el-dropdown-menu>
-						</template>
-					</el-dropdown>
-				</div>
-			</div>
-		</div>
-		<div v-else @click="dialogVisible = true" class="login">登录</div>
+          <el-dropdown ref="dropdown1" trigger="contextmenu">
+            <div @click="showClick" class="header-user-btn">
+              <el-avatar :size="28" :icon="UserFilled"
+                         :src="store.getters.userinfo.avatar ? imageUrl+store.getters.userinfo.avatar : require('../assets/logoHead.svg')"/>
+              <div class="header-user-name">{{
+                  store.getters.userinfo.userName ? store.getters.userinfo.userName : '用户'
+                }}
+              </div>
+            </div>
+            <template #dropdown>
+              <el-dropdown-menu class="dropdown-menu">
+                <el-dropdown-item @click="router().push({ path: '/Orders' })">打赏记录</el-dropdown-item>
+                <el-dropdown-item @click="router().push({ path: '/Exchange' })">兑换中心</el-dropdown-item>
+                <el-dropdown-item divided @click="logout">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+      </div>
+    </div>
+    <div v-else @click="dialogVisible = true" class="login">登录</div>
 	</nav>
 
-	<el-dialog v-model="appletDialogVisible" title="魔法系AI助手" width="300" center align-center>
+	<el-dialog v-model="appletDialogVisible" title="TIME SEA PLUS" width="300" center align-center>
 		<div class="wxAppletCodeRow">
 			<img class="wxAppletCode" :src="require('../assets/wxAppletCode.jpg')">
 			<div>微信扫一扫</div>
@@ -268,18 +274,18 @@ export default defineComponent({
 }
 
 .rechargeButton {
-	width: 50px;
-	height: 34px;
-	border-radius: 6px;
-	margin-right: 12px;
-	padding: 0;
-	font-size: 14px;
-	background-color: #686efe;
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
+  width: 84px;
+  height: 34px;
+  border-radius: 6px;
+  margin-right: 12px;
+  padding: 0;
+  font-size: 14px;
+  background-color: var(--el-text-color-primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .header-user-button {
@@ -296,8 +302,9 @@ export default defineComponent({
 	cursor: pointer;
 }
 
+
 .rechargeButtonText {
-	text-align: center;
+  margin-left: 10px;
 }
 
 @keyframes headerRightAnimation {
@@ -367,5 +374,25 @@ export default defineComponent({
 	justify-content: center;
 	align-items: center;
 	color: white;
+}
+.header-user-btn {
+  height: 36px;
+  cursor: pointer;
+  border-radius: 6px;
+  align-items: center;
+  padding: 0 6px;
+  display: flex;
+}
+.header-user-name {
+  max-width: 120px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  margin-left: 8px;
+  font-size: 15px;
+  overflow: hidden;
+}
+.header-user-btn:hover {
+  background: #e6e6e6;
 }
 </style>

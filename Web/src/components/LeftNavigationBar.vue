@@ -3,7 +3,7 @@
 		<div class="leftNavigation">
 			<el-avatar class="headPortrait" :size="70" :icon="UserFilled"
 				:src="store.getters.userinfo.avatar ? imageUrl + store.getters.userinfo.avatar : require('../assets/logoHead.svg')" />
-			<div class="surplus" v-if="store.getters.userinfo">魔法币：{{ store.getters.userinfo.frequency }}</div>
+			<div class="surplus" v-if="store.getters.userinfo">SUPER币：{{ store.getters.userinfo.frequency }}</div>
 			<div v-else @click="loginVisible = true" class="loginBut">登录</div>
 			<div class="header">
 				<div class="switch-button">
@@ -20,8 +20,8 @@
 			<div class="bottom">
 				<el-avatar :size="40" :icon="UserFilled" :src="require('../assets/logoHead.svg')" />
 				<div class="bottomRight">
-					<div class="bottomRightName">魔法系AI助手</div>
-					<div class="bottomRightEdition">提升你的效率</div>
+					<div class="bottomRightName">TIME SEA PLUS</div>
+					<div class="bottomRightEdition">v 1.2.5</div>
 				</div>
 			</div>
 		</div>

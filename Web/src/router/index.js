@@ -123,7 +123,7 @@ router.beforeEach(async (to) => {
 	})
 
 	// TODO 设置浏览器Title
-	document.title = (to.meta.title ? to.meta.title : '') + ' - 魔法系AI助手'
+	document.title = (to.meta.title ? to.meta.title : '') + ' - TIME SEA PLUS'
 })
 
 export default router

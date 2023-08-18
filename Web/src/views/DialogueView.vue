@@ -2,12 +2,12 @@
 	<div class="body" ref="scrollRef">
 		<div v-if="!conversationList.length" class="explain">
 			<img class="logo" alt="Vue logo" src="../assets/logo02.svg">
-			<div class="expositoryCase">欢迎使用魔法系AI助手</div>
+			<div class="expositoryCase">欢迎使用TIME SEA PLUS</div>
 			<div class="consume">
 				<el-icon>
 					<Goods />
 				</el-icon>
-				<div class="consumeText">每次提问消耗1个魔法币</div>
+				<div class="consumeText">每次提问消耗1个SUPER币</div>
 			</div>
 			<div class="beCareful">请注意不支持违法、违规等不当信息内容</div>
 		</div>
@@ -69,7 +69,7 @@
 						</el-icon>
 					</div>
 					<div>
-						新建对话
+						记忆回溯
 					</div>
 				</div>
 				<el-input ref="inputRef" @keyup.enter="onSubmit" v-model="input"
@@ -96,47 +96,48 @@
 			</div>
 		</div>
 	</div>
-	<el-dialog v-model="dialogueDisplay" title="" :width="dialogueWidth" center>
-		<div>
-			<div class="cache-flex-center">
-				<img alt="Vue logo" src="../assets/logo02.svg" class="cache-img">
-			</div>
-			<div class="cache-flex-center cache-padding-top">
-				<div class="cache-btn" @click="createdNewChat">
-					<el-icon size="16px">
-						<ChatLineSquare />
-					</el-icon>
-					<div class="cache-btn-text">创建新的对话</div>
-				</div>
-			</div>
-			<div class="cache-text">
-				历史对话
-			</div>
-			<div class="cache-content">
-				<div class="cache-scrollbar">
-					<el-scrollbar height="250px">
-						<div class="cache-padding" v-for="(item, index) in dialogueCache.array" :key="index">
-							<div class="cache-flex-space-between cache-margin">
-								<div class="cache-message" @click="switchChat(index)">
-									<div class="cache-message-text">
-										{{ item.title }}
-									</div>
-									<div class="cache-message-time">{{ conversionTime(item.time) }}</div>
-								</div>
-								<div class="cache-selected">
-									<img :src="dialogueCache.index === index ? require('../assets/selected.svg') : require('../assets/close.svg')"
-										class="cache-selected-img" @click="clearDialogue(index)">
-								</div>
-							</div>
-						</div>
-					</el-scrollbar>
-				</div>
-			</div>
-		</div>
-	</el-dialog>
+  <el-dialog v-model="dialogueDisplay" title="" width="430px" center>
+    <div>
+      <div class="cache-flex-center">
+        <img alt="Vue logo" src="../assets/logo02.svg" class="cache-img">
+      </div>
+      <div class="cache-text">
+        TIME SEA PLUS
+      </div>
+      <div class="cache-flex-center cache-padding-top">
+        <div class="cache-btn" @click="createdNewChat">
+          <el-icon size="16px">
+            <ChatLineSquare/>
+          </el-icon>
+          <div class="cache-btn-text">创建新的聊天</div>
+        </div>
+      </div>
+      <div class="cache-content">
+        <div class="cache-scrollbar">
+          <el-scrollbar height="250px">
+            <div class="cache-padding" v-for="(item,index) in dialogueCache.array" :key="index">
+              <div class="cache-flex-space-between cache-margin">
+                <div class="cache-message" @click="switchChat(index)">
+                  <div class="cache-message-text">
+                    {{ item.title }}
+                  </div>
+                  <div class="cache-message-time">{{ conversionTime(item.time) }}</div>
+                </div>
+                <div class="cache-selected">
+                  <img
+                      :src="dialogueCache.index===index?require('../assets/selected.svg'):require('../assets/close.svg')"
+                      class="cache-selected-img" @click="clearDialogue(index)">
+                </div>
+              </div>
+            </div>
+          </el-scrollbar>
+        </div>
+      </div>
+    </div>
+  </el-dialog>
 	<LoginDialog :show="loginVisible" @close="loginVisible = false" />
 </template>
-  
+
 <script>
 import { onMounted, ref, nextTick } from "vue";
 import {
@@ -866,100 +867,96 @@ export default {
 }
 
 .cache-flex-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cache-img {
-	width: 80px;
-	height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .cache-text {
-	text-align: center;
-	font-size: 15px;
-	font-weight: 550;
-	padding-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 550;
+  padding-top: 10px;
 }
 
 .cache-padding-top {
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 .cache-btn {
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: rgb(186, 156, 241);
-	padding: 10px 10px;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  padding: 10px 30px;
+  border-radius: 5px;
 }
 
 .cache-btn-img {
-	width: 30px;
-	height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .cache-btn-text {
-	padding-left: 10px;
-	font-size: 12px;
+  padding-left: 10px;
+  font-size: 12px;
 }
 
 .cache-content {
-	padding: 20px 10px 10px;
+  padding: 20px 10px 10px;
 }
 
 .cache-scrollbar {
-	background-color: rgb(47, 49, 51);
-	border-radius: 10px;
-	color: #b7b7b7;
+  background-color: rgb(47, 49, 51);
+  border-radius: 10px;
+  color: #b7b7b7;
 }
 
 .cache-padding {
-	padding: 10px;
+  padding: 10px;
 }
 
 .cache-flex-space-between {
-	display: flex;
-	justify-content: space-between;
-	margin: 10px 0;
-	width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 .cache-message {
-	padding-bottom: 4px;
-	border-bottom: 1px white solid;
-	max-width: 100%;
-	overflow-x: hidden;
+  padding-bottom: 4px;
+  border-bottom: 1px white solid;
 }
 
 .cache-message-text {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 13px;
-	color: #f5f5f5;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: #f5f5f5;
+  width: 310px;
 }
 
 .cache-message-time {
-	padding-top: 5px;
-	font-size: 5px;
+  padding-top: 5px;
+  font-size: 5px;
 }
 
 .cache-selected {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
 }
 
 .cache-selected-img {
-	width: 20px;
-	height: 20px;
+  width: 20px;
+  height: 20px;
 }
 </style>

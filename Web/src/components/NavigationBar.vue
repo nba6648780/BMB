@@ -27,8 +27,6 @@
       </div>
       <div class="header-right">
         <div class="header-user-wrapper">
-
-
           <el-dropdown ref="dropdown1" trigger="contextmenu">
             <div @click="showClick" class="header-user-btn">
               <el-avatar :size="28" :icon="UserFilled"

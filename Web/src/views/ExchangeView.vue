@@ -69,7 +69,7 @@ export default {
     async function getUser() {
       try {
         let res = await GetUserInfo()
-        console.log(res)
+
         store.commit("setUserinfo", res);
       } catch (e) {
         console.log(e)

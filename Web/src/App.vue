@@ -9,11 +9,11 @@
   <!--      <component :is="Component" :key="$route.name" v-if="!$route.meta.keepAlive"></component>-->
   <!--    </RouterView>-->
   <LeftNavigationBar />
-  <el-dialog class="gg" v-model="dialogVisible" title="公告" center align-center>
+  <el-dialog class="gg" v-model="dialogVisible" title="公告" center align-center width="380px">
     <span style="text-align: center">{{ context }}</span>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary" @click="dialogVisible = false">
+        <el-button type="primary" @click="dialogVisible = false" color="#626aef">
           朕已阅
         </el-button>
       </span>

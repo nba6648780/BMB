@@ -161,9 +161,8 @@ export default defineComponent({
 .animation {
   width: 160px;
   height: 160px;
-  margin: 0 auto;
   overflow: hidden;
-  padding-top: 20px;
+  margin: 20px auto 0;
   background-color: rgb(245, 246, 247);
 }
 

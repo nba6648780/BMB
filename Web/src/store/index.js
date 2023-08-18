@@ -21,7 +21,7 @@ export default createStore({
                 let user = localStorage.getItem('user')
                 state.userinfo = JSON.parse(user)
             }
-            console.log(state.userinfo)
+
         }
     },
     actions: {},
